@@ -6,7 +6,7 @@ import { registerWaiter, unregisterWaiter } from "@ember/test";
 import { observer } from "@ember/object";
 import { isPresent, typeOf } from "@ember/utils";
 import { A } from "@ember/array";
-import $ from "jquery";
+import jQuery from 'jquery';
 import { next, schedule } from "@ember/runloop";
 
 const { testing } = Ember;
@@ -101,7 +101,7 @@ export default Component.extend(InboundActions, EmberJstreeActions, {
    * @method _setupJsTree
    */
   _setupJsTree() {
-    return this.$().jstree(this._buildConfig());
+    return $(this.element).jstree(this._buildConfig());
   },
 
   /**
@@ -456,7 +456,7 @@ export default Component.extend(InboundActions, EmberJstreeActions, {
     });
 
     let pluginsArray = this.get("plugins");
-    
+
     if(isPresent(pluginsArray) && pluginsArray.indexOf("search") > -1){
         /*
              Event: search.jstree
@@ -472,7 +472,7 @@ export default Component.extend(InboundActions, EmberJstreeActions, {
           });
         });
     }
-    
+
     if (isPresent(pluginsArray) && pluginsArray.indexOf("checkbox") > -1) {
       /*
            Event: disable_checkbox.jstree
